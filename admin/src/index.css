@@ -17,3 +17,7 @@ textarea {
     background-color: #ffebf5;
     border-color: #C586;
 }
+
+.custom-logo {
+    width: max(10%, 80px);
+}

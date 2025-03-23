@@ -20,7 +20,7 @@ const Login = ({ setToken }) => {
         toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast.error(error.message);
     }
   };
@@ -55,7 +55,7 @@ const Login = ({ setToken }) => {
             />
           </div>
           <button
-            className="mt-2 w-full py-2 px-4 rounded-md text-white bg-black"
+            className="mt-2 w-full py-2 px-4 rounded-md text-white bg-black cursor-pointer transition duration-300 hover:bg-blue-950"
             type="submit"
           >
             Login
