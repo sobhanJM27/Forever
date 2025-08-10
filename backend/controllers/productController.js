@@ -1,5 +1,5 @@
-import { v2 as cloudinary } from "cloudinary";
-import productModel from "../models/productModel.js";
+import { v2 as cloudinary } from 'cloudinary';
+import productModel from '../models/productModel.js';
 
 // Function for add product
 const addProduct = async (req, res) => {
@@ -26,7 +26,7 @@ const addProduct = async (req, res) => {
     let imagesUrl = await Promise.all(
       images.map(async (item) => {
         let result = await cloudinary.uploader.upload(item.path, {
-          resource_type: "image",
+          resource_type: 'image',
         });
         return result.secure_url;
       })
@@ -38,7 +38,7 @@ const addProduct = async (req, res) => {
       category,
       price: Number(price),
       subCategory,
-      bestseller: bestseller === "true" ? true : false,
+      bestseller: bestseller === 'true' ? true : false,
       sizes: JSON.parse(sizes),
       image: imagesUrl,
       date: Date.now(),
@@ -47,7 +47,7 @@ const addProduct = async (req, res) => {
     const product = new productModel(productData);
     await product.save();
 
-    res.json({ success: true, message: "Prodcut Added" });
+    res.json({ success: true, message: 'Prodcut Added' });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
@@ -69,7 +69,7 @@ const listProducts = async (req, res) => {
 const removeProduct = async (req, res) => {
   try {
     await productModel.findByIdAndDelete(req.body.id);
-    res.json({ success: true, message: "Product Removed" });
+    res.json({ success: true, message: 'Product Removed' });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
